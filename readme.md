@@ -1,4 +1,6 @@
 This project contains some handy example codes written in Go
 
-For more information, please refer http://www.golang.org/
+This codes are tested with the latest go 1.5.
+
+For more information, please refer to http://www.golang.org/
 
