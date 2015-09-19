@@ -17,7 +17,7 @@ func main() {
 		fmt.Println("Fail to create file!")
 		os.Exit(-1)
 	}
-	myFile.WriteString("sample text goes into this tmp file")
+	myFile.WriteString("Sample text goes into this tmp file")
 	err = myFile.Close()
 	//here we call a function in stringutil
 	fmt.Printf("Reversing %s...%s...\n", ow, stringutil.Reverse(ow))
@@ -33,9 +33,9 @@ func main() {
 }
 
 func worker(myChannel chan bool) {
-	fmt.Printf("working on something...")
+	fmt.Printf("Working on something...")
 	time.Sleep(time.Second)
-	fmt.Println("done")
+	fmt.Println("Woke up!")
 
 	//return to main thread by setting a boolean
 	myChannel <- true
