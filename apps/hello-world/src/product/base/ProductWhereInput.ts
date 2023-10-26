@@ -13,10 +13,11 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
+import { EnumProductSize } from "./EnumProductSize";
 
 @InputType()
 class ProductWhereInput {
@@ -75,6 +76,17 @@ class ProductWhereInput {
     nullable: true,
   })
   orders?: OrderListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumProductSize,
+  })
+  @IsEnum(EnumProductSize)
+  @IsOptional()
+  @Field(() => EnumProductSize, {
+    nullable: true,
+  })
+  Size?: "Small" | "Medium" | "Large";
 }
 
 export { ProductWhereInput as ProductWhereInput };

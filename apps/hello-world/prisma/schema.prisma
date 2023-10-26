@@ -46,11 +46,18 @@ model Address {
 }
 
 model Product {
-  createdAt   DateTime @default(now())
+  createdAt   DateTime        @default(now())
   description String?
-  id          String   @id @default(cuid())
+  id          String          @id @default(cuid())
   itemPrice   Float?
   name        String?
   orders      Order[]
-  updatedAt   DateTime @updatedAt
+  Size        EnumProductSize
+  updatedAt   DateTime        @updatedAt
+}
+
+enum EnumProductSize {
+  Small
+  Medium
+  Large
 }

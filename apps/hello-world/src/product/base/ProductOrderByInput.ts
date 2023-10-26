@@ -83,6 +83,17 @@ class ProductOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  Size?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   updatedAt?: SortOrder;
 }
 

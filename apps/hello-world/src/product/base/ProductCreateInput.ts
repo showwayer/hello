@@ -16,9 +16,11 @@ import {
   IsOptional,
   IsNumber,
   ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { OrderCreateNestedManyWithoutProductsInput } from "./OrderCreateNestedManyWithoutProductsInput";
 import { Type } from "class-transformer";
+import { EnumProductSize } from "./EnumProductSize";
 
 @InputType()
 class ProductCreateInput {
@@ -66,6 +68,14 @@ class ProductCreateInput {
     nullable: true,
   })
   orders?: OrderCreateNestedManyWithoutProductsInput;
+
+  @ApiProperty({
+    required: true,
+    enum: EnumProductSize,
+  })
+  @IsEnum(EnumProductSize)
+  @Field(() => EnumProductSize)
+  Size!: "Small" | "Medium" | "Large";
 }
 
 export { ProductCreateInput as ProductCreateInput };
